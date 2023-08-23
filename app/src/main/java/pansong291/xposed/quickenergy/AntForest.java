@@ -51,9 +51,9 @@ public class AntForest {
     /**
      * 检查是否到达一分钟内收取限制
      *
-     * <p>如果启用一分钟收取限制 {@link pansong291.xposed.quickenergy.util.Config#isLimitCollect}，
+     * <p>如果启用一分钟收取限制 {@link Config#isLimitCollect}，
      * 则清理 {@link #collectedQueue} 中超过1分钟的项，之后检查剩余条目是否多余一分钟收取限制数量
-     * {@link pansong291.xposed.quickenergy.util.Config#getLimitCount}。
+     * {@link Config#getLimitCount}。
      *
      * @return  如果到达上限，则返回True，否则返回False
      */
@@ -106,7 +106,6 @@ public class AntForest {
      * Check energy ranking.
      *
      * @param loader the loader
-     * @param times  the times
      */
     public static void checkEnergyRanking(ClassLoader loader) {
         if (RuntimeInfo.getInstance().getLong(RuntimeInfo.RuntimeInfoKey.ForestPauseTime) > System
@@ -610,7 +609,7 @@ public class AntForest {
                 if (collected > 0) {
                     totalCollected += collected;
                     Statistics.addData(Statistics.DataType.COLLECTED, collected);
-                    String str = "偷取能量🪂[" + FriendIdMap.getNameById(userId) + "]#" + collected + "g"
+                    String str = "收取能量🪂[" + FriendIdMap.getNameById(userId) + "]#" + collected + "g"
                             + (StringUtil.isEmpty(extra) ? "" : "[" + extra + "]");
                     Log.forest(str);
                     AntForestToast.show(str);
